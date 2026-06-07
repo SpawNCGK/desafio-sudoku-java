@@ -1,5 +1,6 @@
 package br.com.dio.sudoku;
 
+import javax.swing.SwingUtilities;
 import java.util.Scanner;
 
 public class Main {
@@ -75,6 +76,15 @@ public class Main {
                     }
                     break;
 
+                case 8:
+                    System.out.println("Abrindo o Sudoku Gráfico... Divirta-se!");
+                    // Passa a matriz lógica atual e a máscara de fixos para construir a tela
+                    SwingUtilities.invokeLater(() -> {
+                        SudokuGrafico tela = new SudokuGrafico(tabuleiro, ehFixo);
+                        tela.setVisible(true);
+                    });
+                    break;
+
                 default:
                     System.out.println("Opção inválida!");
             }
@@ -92,6 +102,7 @@ public class Main {
         System.out.println("5. Verificar status do jogo");
         System.out.println("6. Limpar jogadas");
         System.out.println("7. Finalizar o jogo");
+        System.out.println("8. Abrir Interface Gráfica (Swing com Rascunho)");
     }
 
     private static void inicializarTabuleiroComArgs(String[] args) {
